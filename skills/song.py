@@ -347,10 +347,8 @@ class Music(commands.Cog):
         """Stops playing song and clears the queue."""
 
         ctx.voice_state.songs.clear()
-
-        if not ctx.voice_state.is_playing:
-            ctx.voice_state.voice.stop()
-            await ctx.message.add_reaction('⏹')
+        ctx.voice_state.voice.stop()
+        await ctx.message.add_reaction('⏹')
 
     @commands.command(name='skip')
     async def _skip(self, ctx: commands.Context):
@@ -402,15 +400,6 @@ class Music(commands.Cog):
                  .set_footer(text='Viewing page {}/{}'.format(page, pages)))
         await ctx.send(embed=embed)
 
-    @commands.command(name='shuffle')
-    async def _shuffle(self, ctx: commands.Context):
-        """Shuffles the queue."""
-
-        if len(ctx.voice_state.songs) == 0:
-            return await ctx.send("File d'attente vide.")
-
-        ctx.voice_state.songs.shuffle()
-        await ctx.message.add_reaction('✅')
 
     @commands.command(name='remove')
     async def _remove(self, ctx: commands.Context, index: int):
