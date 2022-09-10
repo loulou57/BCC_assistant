@@ -8,7 +8,7 @@ import skills.song
 import skills.bricolage
 
 intents = discord.Intents.all()
-bot = commands.Bot(command_prefix= "!", description = "Bot BCC", intents=intents)
+bot = commands.Bot(command_prefix= "?", description = "Bot BCC", intents=intents)
 
 async def setup(): 
     await bot.add_cog(skills.affiliate.affiliation(bot))
